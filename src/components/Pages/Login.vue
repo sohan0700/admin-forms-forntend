@@ -60,6 +60,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
+import { setTimeout } from 'timers';
 
 export default {
   name: 'Login',
@@ -105,17 +106,23 @@ export default {
     */
     login() {
       // debugger
+      this.spinner(true);
       this.snackbar({
         text: 'Successfully logged in.',
         timeout: 4000,
         open: true,
       });
+      setTimeout(this.spinningBar,3000);
       this.$router.push({name:'Applications'});
     },
     ...mapActions({
       spinner: 'spinner/spinnerStatus',
       snackbar: 'snackbar/snackbar',
     }),
+
+    spinningBar(){
+      return this.spinner(false);
+    }
 
   },
 };
