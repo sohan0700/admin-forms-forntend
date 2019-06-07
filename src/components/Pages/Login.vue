@@ -105,6 +105,11 @@ export default {
     */
     login() {
       // debugger
+      this.snackbar({
+        text: 'Successfully logged in.',
+        timeout: 4000,
+        open: true,
+      });
       this.$router.push({name:'Applications'});
     },
     ...mapActions({
